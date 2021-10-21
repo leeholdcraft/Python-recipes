@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Create New User</title>
+</head>
+<body>
+    <h3><a href="/welcome">Home</a></h3>
+    <h1>Add new recipe: </h1>
+    <form action="/new_recipe" method="POST">
+        <div class="form-group">
+            <label for="exampleInputEmail1">recipe name : </label>
+            <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">description: </label>
+            <input name="description" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">instructions: </label>
+            <input name="instruction" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">under 30 minutes? </label>
+            <input name="time" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</body>
+</html>

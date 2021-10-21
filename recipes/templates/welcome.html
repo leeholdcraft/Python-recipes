@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+                <div style="margin: 50px;">
+                    <h2>Welcome, {{user['first_name']}} you've been logged in!</h2>
+                    <form action="/logout" method="POST"><button class="btn btn-primary">Logout</button></form>
+                    <div style="display: inline-block; width: 500px; height: auto; margin: 30px">
+                        <h3>Your recipes: </h3>
+            <div class="list-group">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Under 30 minutes?</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in content %}
+                        <tr>
+                          <th scope="row">{{row['id']}}</th>
+                          <td>{{row['name']}}</td>
+                          <td>{{row['time']}}</td>
+                          <td><a href="/show/{{row['id']}}">View instructions</a> <a href="/edit/{{row['id']}}">Edit recipe</a> <a href="/delete/{{row['id']}}">Delete recipe</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+                  <a href='/addnew'>Add new recipe</a>
+            </div>
+        </div>
+        <div style="display: inline-block; vertical-align: top; width: 400px; height: auto; margin: 30px;">
+            <form action='/send' method='POST'>
+                {% for x in other %}
+                <div class="form-group">
+                    <label for="messages">Leave a message for {{x['first_name']}}: </label>
+                    <input type="hidden" name="rec_id" value="{{ x['id']}}">
+                    <textarea name="messages" class="form-control" id="messages" rows="3"></textarea>
+                </div>
+                <input type="hidden" value="rec_id">
+                <input type="submit" value="send">
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

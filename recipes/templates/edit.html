@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Edit: </title>
+</head>
+<body>
+    <h3><a href="/welcome">Home</a></h3>
+    <h1 style="margin-left: 30px;">Edit</h1>
+    <form action="/updated/{{recipe[0]['id']}}" method='POST'>
+        <div class="form-group">
+            <label for="first">Recipe name: </label>
+            <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{recipe[0]['name']}}">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Description: </label>
+            <input name="description" type="text" class="form-control" id="exampleInputPassword1" placeholder="{{recipe[0]['description']}}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Instructions: </label>
+            <input name="instruction" type="text" class="form-control" id="exampleInputPassword1" placeholder="{{recipe[0]['insruction']}}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Under 30 min? </label>
+            <input name="time" type="text" class="form-control" id="exampleInputPassword1" placeholder="{{recipe[0]['time']}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit edit</button>
+    </form>
+</body>
+</html>
